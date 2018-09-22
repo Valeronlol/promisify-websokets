@@ -1,0 +1,29 @@
+{
+  "name": "promisify-webscokets",
+  "version": "0.0.1",
+  "description": "Example app demonstrating how to promisify webscokets",
+  "main": "index.js",
+  "scripts": {
+    "run": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valeronlol/promisify-webscokets.git"
+  },
+  "keywords": [
+    "websocket",
+    "promises",
+    "javascript",
+    "nodejs"
+  ],
+  "author": "Valery Kuzivanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Valeronlol/promisify-webscokets/issues"
+  },
+  "homepage": "https://github.com/Valeronlol/promisify-webscokets#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "ws": "^6.0.0"
+  }
+}
