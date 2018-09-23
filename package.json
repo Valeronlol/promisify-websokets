@@ -4,7 +4,9 @@
   "description": "Example app demonstrating how to promisify webscokets",
   "main": "index.js",
   "scripts": {
-    "run": "node"
+    "start": "node index.js",
+    "dev": "nodemon",
+    "watchify": "watchify client/index.js -o public/bundle.min.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,11 @@
   },
   "homepage": "https://github.com/Valeronlol/promisify-webscokets#readme",
   "dependencies": {
+    "event-emitter": "^0.3.5",
     "express": "^4.16.3",
     "ws": "^6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
   }
 }

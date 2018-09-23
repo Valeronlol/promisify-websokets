@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+}
+
+#main {
+  width: 100%;
+  max-width: 1140px;
+  background-color: #b8a7ff;
+  min-height: 100vh;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 1px dashed teal;
+  text-align: center;
+}

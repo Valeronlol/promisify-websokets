@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "is_active": false,
+    "role": "user"
+  },
+  {
+    "id": 2,
+    "is_active": true,
+    "role": "admin"
+  }
+]
