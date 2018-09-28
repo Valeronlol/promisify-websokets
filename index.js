@@ -29,7 +29,8 @@ app.listen(3000, () => {
         return handleInvalidJSON(socket)
       }
 
-      const { method, id = null } = data
+      const { method, id = null, params = {} } = data
+      console.log('request params: ', params)
 
       try {
         if (!id) throwError('id is required', 400)

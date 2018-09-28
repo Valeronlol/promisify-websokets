@@ -1,4 +1,4 @@
-const EE = require('event-emitter')
+const remove = require('lodash/remove')
 
 const ws = new WebSocket("ws://localhost:3001")
 
@@ -7,10 +7,12 @@ const getPrivilegesBtn = document.querySelector('#get-privileges')
 const errorBtn = document.querySelector('#error')
 
 const getUniqId = () => Date.now().toString()
+const subscribes = []
 
-const WS = method => {
+function WS(method, params) {
   const id = getUniqId()
-  ws.send(JSON.stringify({ id, method }))
+  ws.send(JSON.stringify({ id, method, params }))
+  subscribes.push(id)
 
   return new Promise((resolve, reject) => {
     ws.onerror = reject
@@ -20,13 +22,11 @@ const WS = method => {
         const { id: responseId, data, error } = JSON.parse(e.data)
 
         if (data) {
-          /**
-           * TODO решить проблему с несколькими запросами
-           * Убрать event emiter если не неужен
-           * порефакторить
-           */
-          console.log('ONSOLE: ', responseId === id)
-          if (responseId === id) resolve(data)
+          if (subscribes.includes(responseId)) {
+            console.log('!!!!!!!!!: ', data)
+            remove(subscribes, el => el === responseId)
+            resolve(data)
+          }
         } else if (error) {
           reject(error)
         } else {
@@ -40,15 +40,16 @@ const WS = method => {
 }
 
 getUserBtn.onclick = () => {
-  WS('getUsers')
+  WS('getUsers', { someData: [1, 2, 3] })
     .then(data => {
+      console.log('ONSOLE: ', 222)
       console.log('getUsers received: ', data)
     })
     .catch(console.error)
 }
 
 getPrivilegesBtn.onclick = () => {
-  WS('getPrivileges')
+  WS('getPrivileges', { anotherData: [3, 2, 1] })
     .then(data => {
       console.log('getUsers received: ', data)
     })
