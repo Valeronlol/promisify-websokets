@@ -1,6 +1,6 @@
-exports.throwError = (message = 'Internal error', status = 500) => {
+exports.throwError = (message = 'Internal error', code = 500) => {
   const err = new Error(message)
-  err.status = status
+  err.code = code
   throw err
 }
 
@@ -9,24 +9,24 @@ exports.handleInvalidJSON = socket => {
     id: null,
     error: {
       message: 'Invalid JSON',
-      status: 400
+      code: 400
     }
   })
   socket.send(errData)
 }
 
 exports.handleInvalidData = (err, id, socket) => {
-  const { message, status } = err
+  const { message, code } = err
   const errData = JSON.stringify({
     id,
-    error: { message, status }
+    error: { message, code }
   })
   socket.send(errData)
 }
 
 exports.handleUnknownMethod = (method, id, socket) => {
   const err = new Error(`Unknown method: ${method}`)
-  err.status = 400
+  err.code = 400
   this.handleInvalidData(err, id, socket)
 }
 

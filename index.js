@@ -12,13 +12,17 @@ const {
   }
 } = require('./app')
 
+const port = 3000
+
 app.use(express.static(`${__dirname}/public`))
 
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/public/index.html`)
 })
 
-app.listen(3000, () => {
+app.listen(port, initWebSockets)
+
+function initWebSockets() {
   const WS = new WebSocket.Server({ port: 3001 })
 
   WS.on('connection', socket => {
@@ -52,4 +56,4 @@ app.listen(3000, () => {
       }
     })
   })
-})
+}
