@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const WebSocket = require('ws')
-const { privileges, users } = require('./client/stub/index')
+const { privileges, users } = require('./app/stub/index')
 const {
   utils: {
     throwError,
@@ -31,7 +31,7 @@ function initWebSockets() {
   const WS = new WebSocket.Server({ port: socketPort })
 
   WS.on('connection', socket => {
-    // After connection subscribe on message event and handle it
+    // After connection subscribe on message even
     socket.on('message', data => {
       // try to parse JSON data
       try {
