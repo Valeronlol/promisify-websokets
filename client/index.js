@@ -10,7 +10,7 @@ const getUsersAndPrivilegesBtn = document.querySelector('#get-all')
 const errorBtn = document.querySelector('#error')
 const serverExceedTimeout = 2
 
-ws.onmessage = (e) => {
+ws.onmessage = e => {
   try {
     const { id, data, error } = JSON.parse(e.data)
     emitter.emit(id, { data, error })
