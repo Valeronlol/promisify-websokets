@@ -1,11 +1,11 @@
 # promisify-webscokets
 
-### Article source https://medium.com/p/81055345ef7b code
+### Article source code https://github.com/Valeronlol/promisify-websokets
 
 - Run server
-```npm run start``` <br/>
+```yarn start``` or ```npm run start``` <br/>
 and if you want to make changes to the frontend
 - install watchify
 ```npm install watchify -g```
 - run watchify
-```npm run watchify```
+```yarn watchify``` or ```npm run watchify```
