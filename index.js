@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const WebSocket = require('ws')
-const { privileges, users } = require('./app/stub/index')
+const { privileges, users } = require('./app/stub')
 const {
   utils: {
     throwError,

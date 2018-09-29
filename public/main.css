@@ -12,3 +12,7 @@ body {
   border: 1px dashed teal;
   text-align: center;
 }
+
+pre {
+  margin: 10px auto;
+}
